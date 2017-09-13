@@ -8,11 +8,9 @@ bo-oki:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Interested in python, web programming, and baseball.
-    Feel free to contact me via any social media below.
+    Interested in python, web programming, and baseball.<br>
+    Feel free to contact me via any social media below.<br>
     Thank you.
-
-        -bo-oki
 
   # This photo will be used in the about section
   picture:
