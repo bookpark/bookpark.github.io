@@ -340,6 +340,8 @@ fruits.count('red')
 * 리스트보다 적은 메모리 사용
 * 정의후에는 변하지 않는 내부 값
 
+# 딕셔너리, 셋
+
 ## 딕셔너리
 
 ### 딕셔너리 생성
@@ -506,6 +508,155 @@ gugu_list = [{'title': '%d단' % x, 'items': ['%d x %d = %d' % (x, y, x * y) for
 	in range(1, 10)]} for x in range(2, 10)]
 ```
 
+# 함수
+
+반복적인 작업을 하는 코드를 재사용이 가능하게 정의해 놓은 것.
+
+```python
+def 함수명(매개변수[parameters]):
+	동작
+```
+
+### 함수의 정의, 실행
+
+```python
+# 실행 시 'call func'를 print하는 함수 정의
+>>> def func():
+...   print('call func')
+... 
+
+# 함수 자체는 function객체를 참조하는 변수
+>>> func
+<function func at 0x10dabf378>
+
+# 함수를 실행시키기 위해 () 사용
+>>> func()
+call func
+```
+
+### 리턴값이 있는 함수 정의
+
+```python
+>>> def return_true():
+...   return True
+... 
+>>> return_true()
+True
+```
+
+### 매개변수를 사용하는 함수 정의
+
+```python
+>>> def print_arguments(something):
+...   print(something)
+... 
+>>> print_arguments('ABC')
+ABC
+```
+
+### 매개변수(parameter)와 인자(argument)의 차이
+
+함수 내부에서 함수에게 전달되어 온 변수는 매개변수라 부르며, 함수를 호출할 때 전달하는 변수는 인자로 부른다.
 
 
+```
+# 함수 정의때는 매개변수
+def func(매개변수1, 매개변수2):
+  ...
+  
+# 함수 호출시에는 인자
+>>> func(인자1, 인자2)
+```
+
+### 리턴값이 없을 경우
+
+함수에서 리턴해 주는 값이 없을 경우, 아무것도 없다는 뜻을 가진 None 객체를 얻는다.
+
+### 위치 인자(Positional arguments)
+
+매개변수의 순서대로 인자를 전달하여 사용하는 경우
+
+```python
+>>> def student(name, age, gender):
+...   return {'name': name, 'age': age, 'gender': gender}
+... 
+>>> student('hanyeong.lee', 30, 'male')
+{'name': 'hanyeong.lee', 'age': 30, 'gender': 'male'}
+```
+
+### 키워드 인자(Keyword arguments)
+
+매개변수의 이름을 지정하여 인자로 전달하여 사용하는 경우
+
+```
+>>> student(age=30, name='hanyeong.lee', gender='male')
+{'name': 'hanyeong.lee', 'age': 30, 'gender': 'male'}
+```
+
+**위치 인자와 키워드 인자를 동시에 쓴다면, 위치 인자가 먼저 와야 한다.**
+
+### 위치 인자 묶음
+
+```python
+def print_args(*args):
+  print(args)
+```
+
+### 키워드 인자 묶음
+
+```python
+def print_kwargs(**kwargs):
+  print(kwargs)
+```
+
+### 스코프 (영역)
+
+* 글로벌
+	* 로컬 스코프에서 글로벌 스코프의 변수 사용
+```
+global
+```
+* 로컬
+	* 내부 함수에서의 로컬 스코프
+```
+nonlocal
+```
+
+#### 글로벌 키워드와 인자 전달의 차이
+
+인자로 전달한 경우
+
+```
+global_level = 100
+def level_add(value):
+    value += 30
+    print(value)
+
+level_add(global_level)
+print(global_level)
+```
+
+global 키워드를 사용한 경우
+
+```
+global_level = 100
+def level_add():
+    global global_level
+    global_level += 30
+    print(global_level)
+
+level_add()
+print(global_level)
+```
+
+### 람다함수
+
+한 줄 짜리 표현식으로 이루어지며, 반복문이나 조건문 등의 제어문은 포함될 수 없다.
+또한, 함수이지만 정의/호출이 나누어져 있지 않으며 표현식 자체가 바로 호출된다.
+
+```
+lambda <매개변수> : <표현식>
+```
+
+### 클로져
 
