@@ -1141,3 +1141,29 @@ s.groups()
 s.group(0)
 s.group(1)
 ```
+
+`(?P<name>expr)` 패턴을 사용하면 매칭된 표현식 그룹에 이름을 붙여 사용할 수 있다.
+
+```
+m = re.search(r'(?P<before>\w+)\s+(?P<was>was)\s+(?P<after>\w+)', story)
+m.groups()
+m.group('before')
+m.group('was')
+m.group('after')
+```
+
+## 최소 일치와 최대 일치
+
+```
+<html><body><h1>HTML</h1></body></html>
+```
+
+위 항목을
+
+```
+m = re.match(r'<.*>', html)
+```
+
+로 검색하면, `.*`표현식이 첫 번째 `>`에서 멈추는것이 아니라 맨 마지막 `>`까지 검색을 진행한다.
+`*`이나 `+`에 최소일치인 `?`를 붙여주면, 표현식 다음부분에 해당하는 문자열이 처음 나왔을 때 그 부분까지만 일치시키고 검색을 마친다.
+
