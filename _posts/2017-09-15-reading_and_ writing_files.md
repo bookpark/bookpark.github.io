@@ -4,6 +4,7 @@ title:  "파일 입출력"
 categories: python
 date: 2017-09-15
 ---
+# 파일 입출력 (Reading and Writing Files)
 
 ## 파일 열기
 

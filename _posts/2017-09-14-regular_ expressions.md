@@ -5,7 +5,7 @@ categories: python
 date: 2017-09-14
 ---
 
-## 정규표현식 (Regular Expressions)
+# 정규표현식 (Regular Expressions)
 
 복잡한 문자열을 처리할 때 사용하는 기법  
 파이썬에서는 표준 모듈 `re`를 사용

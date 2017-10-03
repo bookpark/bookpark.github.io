@@ -4,6 +4,8 @@ title:  "Markdown 정리"
 categories: markdown
 ---
 
+# 마크다운 (Markdown)
+
 ## 헤더
 	# 기호를 이용해 h1 부터 차례대로 늘려간다.
 
