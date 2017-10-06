@@ -79,21 +79,21 @@ DROP COLUMN column_name;
 
 `ALTER / MODIFY COLUMN` 명령어는 필드의 데이터 타입을 바꿀 때 사용된다
 
-**SQL Server / MS Access**
+SQL Server / MS Access
 
 ```sql
 ALTER TABLE tablename
 ALTER COLUMN column_name datatype;
 ```
 
-**MySQL / Oracle (10G 이전 versions)**
+MySQL / Oracle (10G 이전 versions)
 
 ```sql
 ALTER TABLE tablename
 MODIFY COLUMN column_name;
 ```
 
-**Oracle 10G 이후 버전**
+Oracle 10G 이후 버전
 
 ```sql
 ALTER TABLE tablename
@@ -137,7 +137,7 @@ CREATE TABLE Persons (
 
 #### on CREATE TABLE
 
-**SQL Server / Oracle / MS Access**
+SQL Server / Oracle / MS Access:
 
 ```sql
 CREATE TABLE Persons (
@@ -148,7 +148,7 @@ CREATE TABLE Persons (
 );
 ```
 
-**MySQL**
+MySQL:
 
 ```sql
 CREATE TABLE Persons (
@@ -160,7 +160,7 @@ CREATE TABLE Persons (
 );
 ```
 
-**UNIQUE Constraint 이름을 지정하고, 여러 열에 UNIQUE Constraint 조건을 걸고자 할 때**
+여러 필드 Constraint 지정
 
 ```sql
 CREATE TABLE Persons (
@@ -186,17 +186,89 @@ ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
 
 ### DROP a UNIQUE Constraint
 
-**MySQL**
+MySQL:
 
 ```sql
 ALTER TABLE Persons
 DROP INDEX UC_Person;
 ```
 
-**SQL Server / Oracle / MS Access**
+SQL Server / Oracle / MS Access:
 
 ```sql
 ALTER TABLE Persons
 DROP CONSTRAINT UC_Person;
 ```
 
+### PRIMARY KEY Constraint
+
+#### on CREATE TABLE
+
+MySQL:
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+```
+
+SQL Server / Oracle / MS Access:
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+여러 필드 Constraint 지정
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+```
+
+#### on ALTER TABLE
+
+MySQL / SQL Server / Oracle / MS Access:
+
+```sql
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+```
+
+여러 필드 Constraint 지정
+
+```sql
+ALTER TABLE Persons
+ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+```
+
+> ALTER TABLE로 PRIMARY KEY를 추가할 때는 테이블이 처음 생성될 때 NULL 값이 추가되지 않도록 선언되어야 함
+
+### DROP a PRIMARY KEY Constraint
+
+MySQL:
+
+```sql
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+```
+
+SQL Server / Oracle / MS Access:
+
+```sql
+ALTER TABLE Persons
+DROP CONSTRAINT PK_Person;
+```
