@@ -20,7 +20,7 @@ CREATE DATABASE testDB;
 DROP DATABASE testDB;
 ```
 
-* 데이터베이스의 모든 정보를 날리기 때문에 DROP 할 시에는 주의가 필요함
+> 데이터베이스의 모든 정보를 날리기 때문에 DROP 할 시에는 주의가 필요함
 
 ### CREATE TABLE 명령어
 
