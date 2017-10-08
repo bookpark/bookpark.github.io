@@ -104,14 +104,14 @@ MODIFY column_name;
 
 ```sql
 CREATE TABLE table_name (
-    column1 datatype 제약조건,
-    column2 datatype 제약조건,
-    column3 datatype 제약조건,
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
     ....
 );
 ```
 
-**자주 쓰이는 SQL 제약조건s**
+**자주 쓰이는 SQL 제약조건**
 
 * `NOT NULL` - 필드의 값은 NULL을 가질 수 없다
 * `UNIQUE` - 필드 안의 모든 값은 서로 다른 값을 가져야 한다
