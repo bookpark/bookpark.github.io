@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "TIL 1일차"
-categories: TIL
+title:  "Model Relationships"
+categories: django
 ---
 
-# TIL 1일차
+# Models
 
 ## Relationships
 
@@ -40,19 +40,19 @@ class User(models.Model):
 **The possible values for `on_delete` are found in django.db.models:**
 
 * `CASCADE`  
-Cascade deletes. Django emulates the behavior of the SQL constraint ON DELETE CASCADE and also deletes the object containing the ForeignKey.
+  Cascade deletes. Django emulates the behavior of the SQL constraint ON DELETE CASCADE and also deletes the object containing the ForeignKey.
 
 * `PROTECT`  
-Prevent deletion of the referenced object by raising ProtectedError, a subclass of django.db.IntegrityError.
+  Prevent deletion of the referenced object by raising ProtectedError, a subclass of django.db.IntegrityError.
 
 * `SET_NULL`  
-Set the ForeignKey null; this is only possible if null is True.
+  Set the ForeignKey null; this is only possible if null is True.
 
 * `SET_DEFAULT`  
-Set the ForeignKey to its default value; a default for the ForeignKey must be set.
+  Set the ForeignKey to its default value; a default for the ForeignKey must be set.
 
 * `SET()`  
-Set the ForeignKey to the value passed to SET(), or if a callable is passed in, the result of calling it. In most cases, passing a callable will be necessary to avoid executing queries at the time your models.py is imported:
+  Set the ForeignKey to the value passed to SET(), or if a callable is passed in, the result of calling it. In most cases, passing a callable will be necessary to avoid executing queries at the time your models.py is imported:
 
 
 

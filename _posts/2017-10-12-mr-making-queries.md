@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "TIL 3일차"
-categories: TIL
+title:  "Model relationships / Making queries"
+categories: django
 ---
 
 # TIL 3일차

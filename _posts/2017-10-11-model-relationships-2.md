@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "TIL 2일차"
-categories: TIL
+title:  "Model relationships 2"
+categories: django
+
 ---
 
-# TIL 2일차
+# Models
 
 ## Relationships
 
@@ -13,7 +14,7 @@ categories: TIL
 * This is most useful on the primary key of an object when that object “extends” another object in some way.
 
 * Place <-> Restaurant <- Waiter 
-	* Place와 Restaurant은 `One-to-one`, Waiter는 Restaurant을 `Foreign Key`로 사용
+  * Place와 Restaurant은 `One-to-one`, Waiter는 Restaurant을 `Foreign Key`로 사용
 
 ```python
 class Place(models.Model):
@@ -112,14 +113,14 @@ class User(models.Model):
 ## Model inheritance
 
 * 세 가지 유형의 모델 상속
-	* Abstract base classes (가장 많이 쓰는 형태)
-	* Multi-table inheritance (추천하지 않음)
-	* Proxy models
+  * Abstract base classes (가장 많이 쓰는 형태)
+  * Multi-table inheritance (추천하지 않음)
+  * Proxy models
 
 ### Abstract base classes
 
 * You write your base class and put `abstract=True` in the `Meta` class.
-	* `abstract=True` 옵션을 주면 `Abstract base class`가 된다.
+  * `abstract=True` 옵션을 주면 `Abstract base class`가 된다.
 
 ```python
 class CommonInfo(models.Model):
@@ -139,7 +140,7 @@ class Teacher(CommonInfo):
 ```
 
 * Meta inheritance
-	* Meta를 상속 받아와 필요한 부분만 추가하거나 변경할 수 있다.
+  * Meta를 상속 받아와 필요한 부분만 추가하거나 변경할 수 있다.
 
 ```python
 class CommonInfo(models.Model):

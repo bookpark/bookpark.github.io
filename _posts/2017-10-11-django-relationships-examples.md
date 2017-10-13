@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Django relationships 정리"
+title:  "Model relationships 예제"
 categories: django
 ---
 
-# Django relationshpis 정리
+# Model relationshpis 예제
 
 ```python
 from django.db import models

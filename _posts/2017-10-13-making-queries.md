@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "TIL 4일차"
-categories: TIL
+title:  "making queries"
+categories: django
 ---
 
-# TIL 4일차
+# Making queries
 
 **Filters can reference fields on the model**
 
