@@ -4,7 +4,7 @@ title: "인스타그램 프로젝트"
 categories: django
 ---
 
-# DJango 인스타그램 프로젝트
+# Django 인스타그램 프로젝트
 
 ## 새롭게 배운 내용들
 
