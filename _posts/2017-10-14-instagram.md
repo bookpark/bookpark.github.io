@@ -14,12 +14,12 @@ categories: django
 
 **MEDIA_URL이 MEDIA_ROOT의 파일을 리턴하도록 하는 URL**
 
-* ```Python
-  urlpatterns += static(
-      settings.MEDIA_URL,
-      document_root=settings.MEDIA_ROOT,
-  )
-  ```
+```python
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT,
+)
+```
 
 **URL Mapping**
 
