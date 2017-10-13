@@ -4,7 +4,7 @@ title:  "Model relationships / Making queries"
 categories: django
 ---
 
-# TIL 3일차
+# Model relationships / Making queries
 
 ## Model inheritance
 

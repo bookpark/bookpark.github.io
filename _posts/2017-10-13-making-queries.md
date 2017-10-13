@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "making queries"
+title:  "Making queries"
 categories: django
 ---
 
