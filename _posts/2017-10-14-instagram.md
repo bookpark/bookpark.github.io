@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "인스타그램 프로젝트
+title: "인스타그램 프로젝트"
 categories: django
 ---
 
