@@ -4,8 +4,6 @@ title: "Model Field"
 categories: django
 ---
 
-# Model Field
-
 ## Field options
 
 * null

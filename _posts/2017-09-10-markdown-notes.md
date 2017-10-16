@@ -4,8 +4,6 @@ title:  "Markdown 정리"
 categories: markdown
 ---
 
-# 마크다운 (Markdown)
-
 ## 헤더
 	# 기호를 이용해 h1 부터 차례대로 늘려간다.
 
@@ -25,8 +23,8 @@ categories: markdown
 
 1. 숫자
 2. 숫자
-	1. 숫자
-	2. 숫자
+  1. 숫자
+  2. 숫자
 
 ## 이미지
 	느낌표로 시작, 대괄호 안에 텍스트를 넣고, 소괄호 안에 이미지가 위치한 주소를 넣는다.
@@ -86,6 +84,6 @@ http://www.github.com/
 ## 테이블
 	- 옆 기호로 row를 나타내고 | 이 기호로 column을 나타낸다.
 
-table | head | item
----|---|---|
-content1|content2|content3
+| table    | head     | item     |
+| -------- | -------- | -------- |
+| content1 | content2 | content3 |

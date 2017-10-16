@@ -4,8 +4,6 @@ title:  "Making queries"
 categories: django
 ---
 
-# Making queries
-
 **Filters can reference fields on the model**
 
 - Django provides [`F expressions`](https://docs.djangoproject.com/en/1.11/ref/models/expressions/#django.db.models.F) to allow such comparisons. Instances of `F()` act as a reference to a model field within a query. These references can then be used in query filters to compare the values of two different fields on the same model instance.

@@ -4,8 +4,6 @@ title:  "SQL 데이터베이스"
 categories: SQL
 ---
 
-# SQL 데이터베이스
-
 ## SQL 데이터베이스 명령어
 
 ### CREATE DB 명령어
@@ -507,7 +505,7 @@ ON Persons (LastName, FirstName);
 ```sql
 CREATE UNIQUE INDEX index_name
 ON table_name (column1, column2, ...);
-``` 
+```
 
 #### DROP INDEX 명령어
 

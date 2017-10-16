@@ -5,8 +5,6 @@ categories: django
 
 ---
 
-# Models
-
 ## Relationships
 
 ### One-to-one relationships

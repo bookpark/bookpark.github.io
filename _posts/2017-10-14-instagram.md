@@ -4,8 +4,6 @@ title: "인스타그램 프로젝트"
 categories: django
 ---
 
-# Django 인스타그램 프로젝트
-
 ## 새롭게 배운 내용들
 
 **Pillow**
@@ -75,3 +73,4 @@ urlpatterns += static(
 )
 ```
 
+**Form**

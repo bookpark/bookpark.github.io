@@ -4,8 +4,6 @@ title:  "Model relationships / Making queries"
 categories: django
 ---
 
-# Model relationships / Making queries
-
 ## Model inheritance
 
 ### Multiple inheritance

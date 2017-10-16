@@ -4,10 +4,6 @@ title:  "Model Relationships"
 categories: django
 ---
 
-# Models
-
-## Relationships
-
 ### Many-to-one relationships
 
 > 상대가 없어지면 자기 자신도 사라짐 `on_delete=models.CASCADE`

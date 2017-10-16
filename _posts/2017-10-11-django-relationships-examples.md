@@ -4,8 +4,6 @@ title:  "Model relationships 예제"
 categories: django
 ---
 
-# Model relationshpis 예제
-
 ```python
 from django.db import models
 

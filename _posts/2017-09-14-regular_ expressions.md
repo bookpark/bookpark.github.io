@@ -5,8 +5,6 @@ categories: python
 date: 2017-09-14
 ---
 
-# 정규표현식 (Regular Expressions)
-
 복잡한 문자열을 처리할 때 사용하는 기법  
 파이썬에서는 표준 모듈 `re`를 사용
 
@@ -106,16 +104,16 @@ Lady
 
 ## 정규표현식의 패턴 문자
 
-패턴|문자
----|---
-\\d|숫자
-\\D|비숫자
-\\w|문자
-\\W|비문자
-\\s|공백 문자
-\\S|비공백 문자
-\\b|단어 경계 (\w와 \W의 경계)
-\\B|비단어 경계
+| 패턴   | 문자                 |
+| ---- | ------------------ |
+| \\d  | 숫자                 |
+| \\D  | 비숫자                |
+| \\w  | 문자                 |
+| \\W  | 비문자                |
+| \\s  | 공백 문자              |
+| \\S  | 비공백 문자             |
+| \\b  | 단어 경계 (\w와 \W의 경계) |
+| \\B  | 비단어 경계             |
 
 ```python
 >>> import string
@@ -128,28 +126,28 @@ Lady
 
 **expr**은 정규표현식을 말한다
 
-패턴|의미
----|---
-abc|리터럴 `abc`
-(expr)|expr
-expr1 \| expr2 | expr1 또는 expr2
-`.` | `\n`을 제외한 모든 문자
-`^` | 소스문자열의 시작
-`$` | 소스문자열의 끝
-expr`?` | 0 또는 1회의 expr
-expr`*` | 0회 이상의 최대 expr
-expr`*?`| 0회 이상의 최소 expr
-expr`+` | 1회 이상의 최대 expr
-expr`+?`| 1회 이상의 최소 expr
-expr`{m}`| m회의 expr
-expr`{m,n}`| m에서 n회의 최대 expr
-expr`{m,n}?` | m에서 n회의 최소 expr
-[abc] | a or b or c
-[^abc] | not (a or b or c)
-expr1(?=expr2) | 뒤에 expr2가 오면 expr1에 해당하는 부분
-expr1(?!expr2) | 뒤에 expr2가 오지 않으면 expr1에 해당하는 부분
-(?<=expr1)expr2 | 앞에 expr1이 오면 expr2에 해당하는 부분
-(?<!expr1)expr2 | 앞에 expr1이 오지 않으면 expr2에 해당하는 부분
+| 패턴              | 의미                              |
+| --------------- | ------------------------------- |
+| abc             | 리터럴 `abc`                       |
+| (expr)          | expr                            |
+| expr1 \| expr2  | expr1 또는 expr2                  |
+| `.`             | `\n`을 제외한 모든 문자                 |
+| `^`             | 소스문자열의 시작                       |
+| `$`             | 소스문자열의 끝                        |
+| expr`?`         | 0 또는 1회의 expr                   |
+| expr`*`         | 0회 이상의 최대 expr                  |
+| expr`*?`        | 0회 이상의 최소 expr                  |
+| expr`+`         | 1회 이상의 최대 expr                  |
+| expr`+?`        | 1회 이상의 최소 expr                  |
+| expr`{m}`       | m회의 expr                        |
+| expr`{m,n}`     | m에서 n회의 최대 expr                 |
+| expr`{m,n}?`    | m에서 n회의 최소 expr                 |
+| [abc]           | a or b or c                     |
+| [^abc]          | not (a or b or c)               |
+| expr1(?=expr2)  | 뒤에 expr2가 오면 expr1에 해당하는 부분     |
+| expr1(?!expr2)  | 뒤에 expr2가 오지 않으면 expr1에 해당하는 부분 |
+| (?<=expr1)expr2 | 앞에 expr1이 오면 expr2에 해당하는 부분     |
+| (?<!expr1)expr2 | 앞에 expr1이 오지 않으면 expr2에 해당하는 부분 |
 
 `\`로 시작하는 패턴 문자나, 정규표현식에서 `\`를 직접 사용해야 하는 경우 문자열의 이스케이프문을 사용하지 않고, 정규식 내에서 `\`로 해석됨을 나타내기 위해 앞에 `r`을 붙인다 (raw string으로 취급된다)
 
