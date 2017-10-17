@@ -5,8 +5,6 @@ title: "인스타그램 프로젝트"
 categories: Django
 ---
 
-## 새롭게 배운 내용들
-
 **Pillow**
 
 - 파이썬 image 처리 라이브러리
