@@ -34,7 +34,7 @@ kramdown:
 #
 owner:
   name: bo_oki
-  avatar: leonids-logo.png
+  avatar: django-logo.png
   job: "Future Django Web Developer"
   bio: "A future backend developer who loves baseball."
   email: bkbkgg@gmail.com
