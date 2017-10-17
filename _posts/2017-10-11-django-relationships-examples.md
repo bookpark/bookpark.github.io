@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Model relationships 예제"
-categories: django
+categories: Django
 ---
 
 ```python

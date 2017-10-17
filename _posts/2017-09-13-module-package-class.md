@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "모듈, 패키지, 클래스"
-categories: python
-date: 2017-09-13
+categories: Python
 ---
 
 ## 모듈

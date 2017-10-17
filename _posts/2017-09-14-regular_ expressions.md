@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "정규표현식"
-categories: python
-date: 2017-09-14
+categories: Python
 ---
 
 복잡한 문자열을 처리할 때 사용하는 기법  

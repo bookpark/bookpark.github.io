@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Model Relationships"
-categories: django
+categories: Django
 ---
 
 ### Many-to-one relationships

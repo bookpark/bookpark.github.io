@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "제어문, 함수"
-categories: python
-date: 2017-09-13
+categories: Python
 ---
 
 # 제어문

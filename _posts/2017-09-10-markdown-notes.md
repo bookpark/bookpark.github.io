@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Markdown 정리"
-categories: markdown
+categories: Markdown
 ---
 
 ## 헤더

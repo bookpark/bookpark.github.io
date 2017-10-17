@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Python 기본"
-categories: python
-date: 2017-09-12
+categories: Python
 ---
 
 # Python 환경설정

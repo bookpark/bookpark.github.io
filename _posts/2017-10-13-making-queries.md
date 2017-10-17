@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Making queries"
-categories: django
+categories: Django
 ---
 
 **Filters can reference fields on the model**

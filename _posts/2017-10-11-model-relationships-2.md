@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Model relationships 2"
-categories: django
-
+categories: Django
 ---
 
 ## Relationships

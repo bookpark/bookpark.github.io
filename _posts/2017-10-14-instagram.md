@@ -1,14 +1,15 @@
 ---
 layout: post
+comments: true
 title: "인스타그램 프로젝트"
-categories: django
+categories: Django
 ---
 
 ## 새롭게 배운 내용들
 
 **Pillow**
 
-* 파이썬 image 처리 라이브러리
+- 파이썬 image 처리 라이브러리
 
 **MEDIA_URL이 MEDIA_ROOT의 파일을 리턴하도록 하는 URL**
 

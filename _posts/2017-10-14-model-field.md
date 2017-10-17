@@ -1,7 +1,8 @@
 ---
 layout: post
+comments: true
 title: "Model Field"
-categories: django
+categories: Django
 ---
 
 ## Field options
@@ -144,7 +145,7 @@ categories: django
   * A field for storing universally unique identifiers. Uses Python’s [`UUID`](https://docs.python.org/3/library/uuid.html#uuid.UUID) class. When used on PostgreSQL, this stores in a `uuid`datatype, otherwise in a `char(32)`.
   * Universally unique identifiers are a good alternative to [`AutoField`](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.AutoField) for [`primary_key`](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.Field.primary_key). The database will not generate the UUID for you, so it is recommended to use [`default`](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.Field.default):
 
-```Python
+```python
 import uuid
 from django.db import models
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Model relationships / Making queries"
-categories: django
+categories: Django
 ---
 
 ## Model inheritance
