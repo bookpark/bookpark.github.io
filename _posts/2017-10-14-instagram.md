@@ -212,7 +212,9 @@ def image_upload(request):
 
 ```html
 <form action="" method="post" enctype="multipart/form-data">
+  	{% raw %}
     {% csrf_token %}
+  	{% endraw %}
     {{ form }}
     <button type="submit">업로드</button>
 </form>
