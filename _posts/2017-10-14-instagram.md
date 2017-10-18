@@ -33,7 +33,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/$', post_list, name='post_list'),
-	url(r'^posts/upload/$', post_upload, name='post_upload'),
+    url(r'^posts/upload/$', post_upload, name='post_upload'),
 ]
 urlpatterns += static(
     settings.MEDIA_URL,
