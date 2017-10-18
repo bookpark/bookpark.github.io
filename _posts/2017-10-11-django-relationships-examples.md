@@ -46,12 +46,12 @@ class Car(models.Model):
 # Many-to-one recursive
 class User(models.Model):
     name = models.CharField(max_length=30)
-    spouse = models.ForeignKey(
-        name,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
+    spouse = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.spouse and self.spouse.pk == self.pk:
+            self.spouse = None
+        super(User, self).save(*args, **kwargs)
 
 
 # Many-to-many basic
