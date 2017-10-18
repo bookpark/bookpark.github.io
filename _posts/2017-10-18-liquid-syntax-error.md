@@ -11,13 +11,13 @@ title: "Jekyll에서 Liquid syntax error 해결하기"
 
 예)
 
-![예](liquid_syntax_error_1.png)
+![예](http://ohmywork.co.kr/wp-content/uploads/2017/10/liquid_syntax_error_1.png)
 
 이렇게 단독으로 사용되는 템플릿 언어 같은 경우에 아래 내용을 참고해 수정해보자.
 
 해결)
 
-![해결](/Users/bookpark/Fastcampus/blog/img/liquid_syntax_error_2.png)
+![해결](http://ohmywork.co.kr/wp-content/uploads/2017/10/liquid_syntax_error_2.png)
 
 위와 같이 에러가 나는 부분을 위 코드로 감싸주기만 하면 에러는 해결!
 
