@@ -212,9 +212,7 @@ def image_upload(request):
 
 ```html
 <form action="" method="post" enctype="multipart/form-data">
-  	{% raw %}
-    {% csrf_token %}
-  	{% endraw %}
+  	{% csrf_token %}
     {{ form }}
     <button type="submit">업로드</button>
 </form>
@@ -230,5 +228,30 @@ from post.views import image_upload
 urlpattern = [
     url(r'^posts/upload/$', image_upload, name='<url_name>'
 ]
+```
+
+### Custom user model 생성
+
+*   models.py
+
+```python
+from django.contrib.auth.models import AbstractUser, UserManager as DjangoUserManager
+from django.db import models
+
+class UserManager(AbstractUser):
+	img_profile = models.ImageField(
+      	'프로필 사진'
+		upload_to='user',
+		blank=True,
+    )
+    age = models.IntegerField(
+        '나이'
+    )
+    
+    objects = UserManager()
+    
+    class Meta:
+    	verbose_name = '사용자'
+        verbose_name_plural = f'{verbose_name} 목록'
 ```
 
