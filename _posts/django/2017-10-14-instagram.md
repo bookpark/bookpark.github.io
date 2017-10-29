@@ -310,8 +310,8 @@ Post가 보여지는 기본 쿼리셋을 변경해보았다.
 ```python
 # Author의 값이 None일 때 Manager를 통해 기본 쿼리셋을 변경하는 함수 구현
 class PostManager(models.Manager):
-	def get_queryset(self):
-		return super(PostManager, self).get_queryset().exclude(author=None)
+    def get_queryset(self):
+        return super(PostManager, self).get_queryset().exclude(author=None)
 
 # Post 모델에서 PostManager()를 호출하여 기본 쿼리셋 변경
 class Post(models.Model):
@@ -323,7 +323,17 @@ class Post(models.Model):
 
 ### 좋아요 기능
 
-좋아요 기능을 구현하기 위해 post앱의 views.py에서 toggle 함수를 구현했다.
+좋아요 기능을 구현하기 위해 위해서는 모델 관계에 대한 이해가 있어야 한다. 앞서 배운 model relationships 들 중에 적용 가능한 관계를 유저 모델에 적용해보았다. 이 후, post앱의 views.py에서 toggle 함수를 구현했다.
+
+-   member/models.py
+
+```python
+class User(AbstractUser):
+    ...
+    like_posts = models.ManyToManyField(
+    	'post.Post',
+    )
+```
 
 -   post/views.py
 
@@ -355,13 +365,13 @@ urlpatterns = [
 ```django
 <form action="{% raw %}{% 'post:post_like_toggle' post_pk=post.pk %}{% endraw %}" method="POST">
     {% raw %}{% csrf_token %}{% endraw %}
-    <span
+    <span 
           class="glyphicon
-                 {% raw %}{% if post in user.like_posts.all %}{% endraw %}
-                 glyphicon-heart
-                 {% raw %}{% else %}{% endraw %}
-                 glyphicon-heart-empty
-                 {% raw %}{% endif %}{% endraw %}"
+          {% raw %}{% if post in user.like_posts.all %}{% endraw %}
+          glyphicon-heart
+          {% raw %}{% else %}{% endraw %}
+          glyphicon-heart-empty
+          {% raw %}{% endif %}{% endraw %}"
           aria-hidden="true">
     </span>
 </form>
@@ -371,7 +381,87 @@ urlpatterns = [
 
 ### 팔로우 기능
 
+좋아요 기능과 같이 팔로우 기능을 구현하기 위해 유저 모델을 먼저 생성했다. 중간자 모델을 적용하여 이를 통해 팔로우 기능을 구현해보았다.
 
+-   member/models.py
+
+```python
+class User(AbstractUser):
+    ...
+    following_users = models.ManyToManyField(
+    	'self',
+    	symmetrical=False,
+    	through='Relation',
+    	related_name='followers',
+    )
+    
+	def follow_toggle(self, user):
+        if not isinstance(user, User):
+            raise ValueError('...')
+        
+        relation, relation_created = self.following_users_relations.get_or_create(follower=user)
+        if relation_created:
+            return True
+        relation.delete()
+        return False
+        
+class Relation(models.Model):
+    following = models.ForeignKey(
+    	User,
+    	on_delete=models.CASCADE,
+    	related_name='following_relations'
+    )
+    followee = models.ForeignKey(
+    	User,
+    	on_delete=models.CASCADE,
+    	related_name='follower_relations'
+    )
+    created_at = models.DateTimeField(
+    	auto_now_add=True,
+    )
+```
+
+-   member/views.py
+
+```python
+def follow_toggle(request, user_pk):
+    if request.method == 'POST':
+        followee = User.objects.get(pk=user_pk)
+        following = request.user
+        following.follow_toggle(followee)
+        return redirect('member:profile.html', user_pk=user_pk)
+```
+
+-   member/urls.py
+
+```python
+urlpatterns = [
+    url(r'^posts/(?P<user_pk>\d+)/follow-toggle$', follow_toggle
+]
+```
+
+-   profile.html — *좋아요 기능과 마찬가지로 bootstrap icon으로 팔로우를 표현해보았다*
+
+```django
+<div class="btn-container">
+    {% raw %}{% if not request.user == target_user %}{% endraw %}
+    <form action="{% raw %}{% url 'member:follow_toggle' user_pk=target_user.pk %}{% endraw %}" method="POST">
+        {% raw %}{% csrf_token %}{% endraw %}
+        <button class="btn btn-default" aria-label="Left Align">
+            <span
+                class="glyphicon
+                {% raw %}{% if target_user in user.following_users.all %}{% endraw %}
+                glyphicon-star
+                {% raw %}{% else %}{% endraw %}
+                glyphicon-star-empty
+                {% raw %}{% endif %}{% endraw %}"
+                aria-hidden="true">
+            </span>
+        </button>
+    </form>
+    {% raw %}{% endif %}{% endraw %}
+</div>
+```
 
 
 
