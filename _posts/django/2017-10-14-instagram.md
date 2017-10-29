@@ -210,10 +210,9 @@ def image_upload(request):
 
 -   _template_name_.html
 
-```html
-<form action="" method="post" enctype="multipart/form-data">
-  	{% raw %}{% csrf_token %}{% endraw %}
-    {{ form }}
+```django
+<form action="" method="POST" enctype="multipart/form-data">
+    {% raw %}{% csrf_token %}{% endraw %}
     <button type="submit">업로드</button>
 </form>
 ```
@@ -266,11 +265,73 @@ AUTH_USER_MODEL = 'member.User'
 
 ### Decorator
 
+-   POST 형식의 요청을 처리할 로그인 필수 데코레이터를 구현해보았다.
+
+```python
+from functools import wraps
+from urllib.parse import urlparse
+
+from django.shortcuts import redirect
+from django.urls import reverse
+
+
+def signin_required(view_func):
+    @wraps(view_func)
+    def wrapped_view_func(*args, **kwargs):
+        request = args[0]
+        if not request.user.is_authenticated:
+            # 기존: /member/signin
+            # 변경: /member/signin/?next=[HTTP_REFERER]
+            referer = urlparse(request.META['HTTP_REFERER']).path
+            url = '{base_url}?next={referer}'.format(
+                base_url=reverse('member:signin'),
+                referer=referer)
+            return redirect(url)
+        return view_func(*args, **kwargs)
+
+    return wrapped_view_func
+```
+
 -   wraps
+
+
+wraps를 쓰는 이유에 대해서는 아래 링크가 잘 설명해주고 있다.
+
+[왜 파이썬 데코레이터를 만들때, **@wraps**어노테이션을 쓰는 것을 권장하는 걸까?](https://gist.github.com/shoveller/b4d2e1e6d33906f2a667)
 
 
 
 ### 기본 쿼리셋 변경
+
+Post가 보여지는 기본 쿼리셋을 변경해보았다.
+
+-   post/models.py
+
+```python
+# Author의 값이 None일 때 Manager를 통해 기본 쿼리셋을 변경하는 함수 구현
+class PostManager(models.Manager):
+	def get_queryset(self):
+		return super(PostManager, self).get_queryset().exclude(author=None)
+
+# Post 모델에서 PostManager()를 호출하여 기본 쿼리셋 변경
+class Post(models.Model):
+    ...
+    objects = PostManager()
+```
+
+
+
+### 좋아요 기능
+
+
+
+
+
+### 팔로우 기능
+
+
+
+
 
 ### 페이스북 로그인
 
@@ -288,7 +349,7 @@ AUTH_USER_MODEL = 'member.User'
 8.  (선택사항) access_token을 디버그함
 9.  access_token을 이용해 UserInfo를 graphAPI에 요청에 받아옴
 10.  받아온 UserInfo에 해당하는 User가 우리의 DB에 있는지 검사
-    1.  있으면 해당 user를 로그인
-    2.  없으면 정보로 유저를 만들어 로그인
+   1.  있으면 해당 user를 로그인
+   2.  없으면 정보로 유저를 만들어 로그인
 11.  post_list로 redirect
 
