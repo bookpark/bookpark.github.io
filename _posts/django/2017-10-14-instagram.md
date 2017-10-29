@@ -238,7 +238,7 @@ from django.contrib.auth.models import AbstractUser, UserManager as DjangoUserMa
 from django.db import models
 
 class UserManager(AbstractUser):
-	img_profile = models.ImageField(
+    img_profile = models.ImageField(
       	'프로필 사진'
 		upload_to='user',
 		blank=True,
@@ -323,7 +323,49 @@ class Post(models.Model):
 
 ### 좋아요 기능
 
+좋아요 기능을 구현하기 위해 post앱의 views.py에서 toggle 함수를 구현했다.
 
+-   post/views.py
+
+```python
+def post_like_toggle(self, post_pk):
+    if request.method == "POST":
+        post = get_object_or_404(Post, pk=post_pk)
+        user = request.user
+        
+        # 유저 모델에 정의해놓은 like_posts의 post 목록 확인
+        filtered_like_posts = user.like_posts.filter(pk=post.pk)
+        if filtered_like_posts.exists():
+            user.like_posts.remove(post)
+        else:
+            user.like_posts.add(post)
+        return redirect('post:post_detail', post_pk=post.pk)
+```
+
+-   post/urls.py
+
+```python
+urlpatterns = [
+    url(r'^posts/(?P<post_pk>\d+)/like-toggle', post_like_toggle, name='post_like_toggle')
+]
+```
+
+-   post.html — *bootstrap icon을 사용해 좋아요를 표현해보았다*
+
+```django
+<form action="{% raw %}{% 'post:post_like_toggle' post_pk=post.pk %}{% endraw %}" method="POST">
+    {% raw %}{% csrf_token %}{% endraw %}
+    <span
+          class="glyphicon
+                 {% raw %}{% if post in user.like_posts.all %}{% endraw %}
+                 glyphicon-heart
+                 {% raw %}{% else %}{% endraw %}
+                 glyphicon-heart-empty
+                 {% raw %}{% endif %}{% endraw %}"
+          aria-hidden="true">
+    </span>
+</form>
+```
 
 
 
