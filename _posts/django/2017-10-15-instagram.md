@@ -491,7 +491,7 @@ urlpatterns = [
 6.  브라우저는 GET 요청에 포함 된 code 정보를 이용해 페이스북 서버에 access_token을 요청
 7.  페이스북이 access_token을 돌려줌
 8.  (선택사항) access_token을 디버그함
-9.  access_token을 이용해 UserInfo를 graphAPI에 요청에 받아옴
+9.  access_token을 이용해 UserInfo를 graphAPI에 요청 받아옴
 10.  받아온 UserInfo에 해당하는 User가 우리의 DB에 있는지 검사
   1.  있으면 해당 user를 로그인
   2.  없으면 정보로 유저를 만들어 로그인
