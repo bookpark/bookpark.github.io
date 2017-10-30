@@ -48,7 +48,9 @@ DATABASES = {
 >>> ./manage.py loaddata dump.json
 ```
 
->   이 후 migrate 만 실행시켜주면 잘 동작한다
+```이 후 migrate 만 실행시켜주면 잘 동작한다```
+
+
 
 ### 공개 저장소에 올릴 때 주의 사항
 
@@ -93,9 +95,11 @@ SECRET_KEY = config_secret_common['django']['secret_key']
 DATABASES = config_secret_common['django']['databases']
 ```
 
->   .gitignore에 .config_secret/ 폴더만 추가 하면 성공적으로 분리 끝!
->
->   README 작성 시, .config_secret/settings_common.json 경로에 SECRET_KEY를 저장했다는 내용만 보여주면 누구든지 가져다 쓸 수 있다.
+```.gitignore에 .config_secret/ 폴더만 추가 하면 성공적으로 분리 끝!```
+
+```README 작성 시, .config_secret/settings_common.json 경로에 SECRET_KEY를 저장했다는 내용만 보여주면 누구든지 가져다 쓸 수 있다.```
+
+
 
 ### Pillow
 
@@ -104,6 +108,8 @@ DATABASES = config_secret_common['django']['databases']
 ```
 >>> pip install pillow
 ```
+
+
 
 ### MEDIA_URL이 MEDIA_ROOT의 파일을 리턴하도록 하는 URL
 
@@ -115,6 +121,8 @@ urlpatterns += static(
     document_root=settings.MEDIA_ROOT,
 )
 ```
+
+
 
 ### URL Mapping
 
@@ -169,6 +177,8 @@ urlpatterns += static(
     document_root=settings.MEDIA_ROOT,
 )
 ```
+
+
 
 ### Form
 
@@ -261,7 +271,9 @@ class UserManager(AbstractUser):
 AUTH_USER_MODEL = 'member.User'
 ```
 
->   settings.py에 Custom user model 사용을 선언해줌
+```settings.py에 Custom user model 사용을 선언해줌```
+
+
 
 ### Decorator
 
@@ -481,7 +493,7 @@ urlpatterns = [
 8.  (선택사항) access_token을 디버그함
 9.  access_token을 이용해 UserInfo를 graphAPI에 요청에 받아옴
 10.  받아온 UserInfo에 해당하는 User가 우리의 DB에 있는지 검사
-   1.  있으면 해당 user를 로그인
-   2.  없으면 정보로 유저를 만들어 로그인
+  1.  있으면 해당 user를 로그인
+  2.  없으면 정보로 유저를 만들어 로그인
 11.  post_list로 redirect
 
