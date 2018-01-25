@@ -2,6 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/tag/design/</loc>
+<<<<<<< HEAD
 <lastmod>2018-01-25T15:36:16+09:00</lastmod>
 </url>
 <url>
@@ -11,6 +12,17 @@
 <url>
 <loc>/tag/web/</loc>
 <lastmod>2018-01-25T15:36:16+09:00</lastmod>
+=======
+<lastmod>2018-01-25T15:50:30+09:00</lastmod>
+</url>
+<url>
+<loc>/tag/jekyll/</loc>
+<lastmod>2018-01-25T15:50:30+09:00</lastmod>
+</url>
+<url>
+<loc>/tag/web/</loc>
+<lastmod>2018-01-25T15:50:30+09:00</lastmod>
+>>>>>>> gh-pages
 </url>
 <url>
 <loc>/posts/chalk-sample-post-with-all-elements</loc>
