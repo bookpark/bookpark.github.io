@@ -3,7 +3,7 @@
 blog_theme: dark # Or use dark
 name: bo_oki
 paginate: 25
-url: # add your site url (format: https://example.com)
+url: https://bookpark.github.io
 
 
 # Optional settings
