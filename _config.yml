@@ -10,7 +10,7 @@ url: https://bookpark.github.io
 
 about_enabled: false # Change to true if you wish to show an icon in the navigation that redirects to the about page
 baseurl: # Set if blog doesn't sit at the root of the domain (format: /blog)
-discus_identifier: bo_oki
+discus_identifier: bookpark
 ga_analytics: UA-108297572-1
 local_fonts: true # Change to true if you wish to use local fonts
 rss_enabled: true # Change to false if not
