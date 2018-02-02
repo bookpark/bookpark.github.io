@@ -1,20 +1,26 @@
----
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:dc="https://purl.org/dc/elements/1.1/">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ page.path | absolute_url }}" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:10 %}
+    <title>bo_oki</title>
+    <description></description>
+    <link>https://bookpark.github.io</link>
+    <atom:link href="https://bookpark.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.description | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | absolute_url }}</link>
-        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        <title>Django에서 WYSIWYG 에디터 사용하기</title>
+        <description>Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자</description>
+        <pubDate>Thu, 01 Feb 2018 00:00:00 +0900</pubDate>
+        <link>https://bookpark.github.io/posts/django-ckeditor</link>
+        <guid isPermaLink="true">https://bookpark.github.io/posts/django-ckeditor</guid>
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Django 2.0 UnicodeDecodeError 해결법</title>
+        <description>bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자</description>
+        <pubDate>Thu, 25 Jan 2018 00:00:00 +0900</pubDate>
+        <link>https://bookpark.github.io/posts/reverse-bytestring</link>
+        <guid isPermaLink="true">https://bookpark.github.io/posts/reverse-bytestring</guid>
+      </item>
+    
   </channel>
 </rss>

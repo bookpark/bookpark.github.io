@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>bo_oki | Django 2.0 UnicodeDecodeError 해결법</title>
+  <meta name="description" content="bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Django 2.0 UnicodeDecodeError 해결법">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bookpark.github.io/posts/reverse-bytestring">
+  <meta property="og:description" content="bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자">
+  <meta property="og:site_name" content="bo_oki">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://bookpark.github.io/posts/reverse-bytestring">
+  <meta name="twitter:title" content="Django 2.0 UnicodeDecodeError 해결법">
+  <meta name="twitter:description" content="bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자">
+
+  
+    <meta property="og:image" content="https://bookpark.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+    <meta name="twitter:image" content="https://bookpark.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+  
+
+  <link href="https://bookpark.github.io/feed.xml" type="application/rss+xml" rel="alternate" title="bo_oki Last 10 blog posts" />
+
+  
+    <link rel="stylesheet" type="text/css" href="/assets/fonts-5714d00e8bde3c6b5afa12217e2ee074d34dd67cc505fa419382000ad86e60dd.css">
+  
+
+  
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-light-a98c41efc5ed9fcc06ac664c9e2f7a9b3c3b2e0a52357d221fe382f6f4abc8fc.ico">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon-light-87d1f2a3a19b1500e5c1626a0492025ca5f7f97d24540dc5900288e92112925a.png">
+    <link rel="stylesheet" type="text/css" href="/assets/light-dd81b21ab090e25ca3de9c7f8a04c3ed3092374c826eb42b9fb7cac72c5f41e7.css">
+  
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="bo_oki">bo_oki</a>
+  <ul class="header-links">
+    
+    
+    
+      <li>
+        <a href="https://www.facebook.com/bookpark" rel="noreferrer noopener" target="_blank" title="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-facebook">
+  <use href="/assets/facebook-72c99b26d37bee65607720abb23d26b44ef30cca1187f98b0d9305be1230b1bf.svg#icon-facebook" xlink:href="/assets/facebook-72c99b26d37bee65607720abb23d26b44ef30cca1187f98b0d9305be1230b1bf.svg#icon-facebook"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="https://github.com/bookpark" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:bkbkgg@gmail.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-rss">
+  <use href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss" xlink:href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss"></use>
+</svg>
+
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>Django 2.0 UnicodeDecodeError 해결법</h1>
+            <p>bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자</p>
+            <div class="article-list-footer">
+              <span class="article-list-date">
+                January 25, 2018
+              </span>
+              <span class="article-list-divider">-</span>
+              <span class="article-list-minutes">
+                
+                
+                  2 minute read
+                
+              </span>
+              <span class="article-list-divider">-</span>
+              <div class="article-list-tags">
+                
+                  <a href="/tag/web">web</a>
+                
+                  <a href="/tag/django">django</a>
+                
+              </div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p>최근 이메일 인증을 다시 구현하기 위해 전에 쓰던 코드를 적용하고 테스트를 하는데…</p>
+
+<p><a href="/assets/documentation/django_unicode_decode_error-d90404931333646a9c10f29920473a6e3a8540a5ee267afa95f16a03b95824ed.png" data-rjs="/assets/documentation/django_unicode_decode_error-d90404931333646a9c10f29920473a6e3a8540a5ee267afa95f16a03b95824ed.png" class="fluidbox-trigger">
+  <img src="/assets/documentation/django_unicode_decode_error-d90404931333646a9c10f29920473a6e3a8540a5ee267afa95f16a03b95824ed.png" alt="Decode Error" />
+</a></p>
+
+<p style="text-align: center; font-size: 8; font-style: italic;">아니 이게 왠 처음보는 에러메시지인가..</p>
+
+<p>정신 차리고 언제나 해답이 있는 장고 공식문서를 찾아가보았다.
+아니나 다를까 그 곳엔 역시 해답이 있었다.</p>
+
+<p><a href="/assets/documentation/django_2.0_bytestrings-da588ccb766d41342578104e66c3a51b3464e173930f01299d55e0bb2978def1.png" data-rjs="/assets/documentation/django_2.0_bytestrings-da588ccb766d41342578104e66c3a51b3464e173930f01299d55e0bb2978def1.png" class="fluidbox-trigger">
+  <img src="/assets/documentation/django_2.0_bytestrings-da588ccb766d41342578104e66c3a51b3464e173930f01299d55e0bb2978def1.png" alt="Bytestrings" />
+</a></p>
+
+<p>Django는 1.11 버전까지 Python 2를 지원하기 위해 bytestring과 unicode string을 모두 지원했었지만 Django가 2.0으로 버전 업이 되면서 Python 2는 더 이상 지원하지 않게 되면서 bytestring 사용을 제한한다는 얘기이다.</p>
+
+<p>그리고 친절하게 reverse() 전에 force_text() 대신 먼저 decode()를 호출하라는 우리의 공식문서.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 회원가입 api 쪽 encode 부분</span>
+<span class="o">...</span>
+
+<span class="n">html_message</span> <span class="o">=</span> <span class="n">render_to_string</span><span class="p">(</span><span class="s">'user_activate.html'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s">'domain'</span><span class="p">:</span> <span class="n">current_site</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span>
+    <span class="s">'uid'</span><span class="p">:</span> <span class="n">urlsafe_base64_encode</span><span class="p">(</span><span class="n">force_bytes</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">)),</span>
+    <span class="s">'token'</span><span class="p">:</span> <span class="n">urlsafe_base64_encode</span><span class="p">(</span><span class="n">force_bytes</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">token</span><span class="p">)),</span>
+<span class="p">})</span>
+
+<span class="o">...</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 이메일 인증 메서드 decode 부분</span>
+<span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">uidb64</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">uid</span> <span class="o">=</span> <span class="n">force_text</span><span class="p">(</span><span class="n">urlsafe_base64_decode</span><span class="p">(</span><span class="n">uidb64</span><span class="p">))</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">force_text</span><span class="p">(</span><span class="n">urlsafe_base64_decode</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+
+    <span class="o">...</span>
+</code></pre></div></div>
+
+<p>이러했던 코드를…</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 회원가입 api 쪽 encode 부분</span>
+<span class="o">...</span>
+
+<span class="n">html_message</span> <span class="o">=</span> <span class="n">render_to_string</span><span class="p">(</span><span class="s">'user_activate.html'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s">'domain'</span><span class="p">:</span> <span class="n">current_site</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span>
+    <span class="s">'uid'</span><span class="p">:</span> <span class="n">urlsafe_base64_encode</span><span class="p">(</span><span class="n">force_bytes</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span>
+    <span class="s">'token'</span><span class="p">:</span> <span class="n">urlsafe_base64_encode</span><span class="p">(</span><span class="n">force_bytes</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">token</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span>
+<span class="p">})</span>
+
+<span class="o">...</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 이메일 인증 메서드 decode 부분</span>
+<span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">uidb64</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">uid</span> <span class="o">=</span> <span class="n">urlsafe_base64_decode</span><span class="p">(</span><span class="n">uidb64</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">urlsafe_base64_decode</span><span class="p">(</span><span class="n">token</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+    <span class="o">...</span>
+</code></pre></div></div>
+
+<p>이렇게 바꾸어주니!</p>
+
+<p><a href="/assets/documentation/gaviscon-41deef5ee1a5ce07563724d58a8302264d3ce4a4897876dfb59a3291df5f4d3d.jpg" data-rjs="/assets/documentation/gaviscon-41deef5ee1a5ce07563724d58a8302264d3ce4a4897876dfb59a3291df5f4d3d.jpg" class="fluidbox-trigger">
+  <img src="/assets/documentation/gaviscon-41deef5ee1a5ce07563724d58a8302264d3ce4a4897876dfb59a3291df5f4d3d.jpg" alt="Gaviscon" />
+</a></p>
+
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Django+2.0+UnicodeDecodeError+%ED%95%B4%EA%B2%B0%EB%B2%95%20-%20https://bookpark.github.io/posts/reverse-bytestring" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://bookpark.github.io/posts/reverse-bytestring" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+            <a href="https://plus.google.com/share?url=https://bookpark.github.io/posts/reverse-bytestring" title="Share on Google+" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 128 128"><path d="M40.7 55.9v16.1c0 0 15.6 0 22 0C59.2 82.5 53.8 88.2 40.7 88.2c-13.3 0-23.7-10.8-23.7-24.2s10.4-24.2 23.7-24.2c7.1 0 11.6 2.5 15.8 5.9 3.3-3.3 3.1-3.8 11.6-11.9 -7.2-6.6-16.8-10.6-27.4-10.6C18.2 23.3 0 41.5 0 64c0 22.5 18.2 40.7 40.7 40.7 33.6 0 41.8-29.3 39-48.8H40.7zM113.9 56.7V42.6h-10.1v14.1H89.4v10.1h14.5v14.5h10.1V66.8H128V56.7H113.9z"/></svg>
+            </a>
+          </div>
+
+          
+            <div id="disqus_thread" class="article-comments"></div>
+            <script src="https://bookpark.disqus.com/embed.js" async defer></script>
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+          
+        </article>
+        <footer class="footer scrollappear">
+  <p>
+    ⓒ 2018. bo_oki
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108297572-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-108297572-1');
+  </script>
+
+
+<script type="text/javascript" src="/assets/vendor-2e5becc015a837c852edabccbc32f5a390d4afa7a2ca601db948ea5b9e50292a.js"></script>
+
+
+
+
+  <script type="text/javascript" src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js"></script>
+
+
+<script type="text/javascript" src="/assets/application-cd43a7f9bd8a08997bb19229cd040e7129ede0a1adf77c693b5835c9f8c2a4b1.js"></script>
+
+</body>
+</html>

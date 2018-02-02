@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>bo_oki | Django에서 WYSIWYG 에디터 사용하기</title>
+  <meta name="description" content="Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Django에서 WYSIWYG 에디터 사용하기">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bookpark.github.io/posts/django-ckeditor">
+  <meta property="og:description" content="Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자">
+  <meta property="og:site_name" content="bo_oki">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://bookpark.github.io/posts/django-ckeditor">
+  <meta name="twitter:title" content="Django에서 WYSIWYG 에디터 사용하기">
+  <meta name="twitter:description" content="Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자">
+
+  
+    <meta property="og:image" content="https://bookpark.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+    <meta name="twitter:image" content="https://bookpark.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+  
+
+  <link href="https://bookpark.github.io/feed.xml" type="application/rss+xml" rel="alternate" title="bo_oki Last 10 blog posts" />
+
+  
+    <link rel="stylesheet" type="text/css" href="/assets/fonts-5714d00e8bde3c6b5afa12217e2ee074d34dd67cc505fa419382000ad86e60dd.css">
+  
+
+  
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-light-a98c41efc5ed9fcc06ac664c9e2f7a9b3c3b2e0a52357d221fe382f6f4abc8fc.ico">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon-light-87d1f2a3a19b1500e5c1626a0492025ca5f7f97d24540dc5900288e92112925a.png">
+    <link rel="stylesheet" type="text/css" href="/assets/light-dd81b21ab090e25ca3de9c7f8a04c3ed3092374c826eb42b9fb7cac72c5f41e7.css">
+  
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="bo_oki">bo_oki</a>
+  <ul class="header-links">
+    
+    
+    
+      <li>
+        <a href="https://www.facebook.com/bookpark" rel="noreferrer noopener" target="_blank" title="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-facebook">
+  <use href="/assets/facebook-72c99b26d37bee65607720abb23d26b44ef30cca1187f98b0d9305be1230b1bf.svg#icon-facebook" xlink:href="/assets/facebook-72c99b26d37bee65607720abb23d26b44ef30cca1187f98b0d9305be1230b1bf.svg#icon-facebook"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="https://github.com/bookpark" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:bkbkgg@gmail.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-rss">
+  <use href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss" xlink:href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss"></use>
+</svg>
+
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>Django에서 WYSIWYG 에디터 사용하기</h1>
+            <p>Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자</p>
+            <div class="article-list-footer">
+              <span class="article-list-date">
+                February 1, 2018
+              </span>
+              <span class="article-list-divider">-</span>
+              <span class="article-list-minutes">
+                
+                
+                  3 minute read
+                
+              </span>
+              <span class="article-list-divider">-</span>
+              <div class="article-list-tags">
+                
+                  <a href="/tag/web">web</a>
+                
+                  <a href="/tag/django">django</a>
+                
+              </div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p>웹 프로젝트를 진행하면서 어드민 페이지에 위지위그(WYSIWYG) 방식의 에디터가 필요로 해 리서치를 하던 중 손쉽게 세팅이 가능하고 django-storages, S3를 지원하는 라이브러리를 발견해 소개하고자 한다.</p>
+
+<p><a href="https://ko.wikipedia.org/wiki/%EC%9C%84%EC%A7%80%EC%9C%84%EA%B7%B8">위지위그란?</a></p>
+
+<p>이번에 사용한 위지위그 방식 리치 텍스트 에디터는 CKSource에서 개발한 CKEditor이고 Django에서 쓸 수 있도록 배포한 <a href="https://github.com/django-ckeditor/django-ckeditor">django-ckeditor</a> 라이브러리를 사용하였다.</p>
+
+<p>###설치</p>
+
+<h5 id="필수-요소">필수 요소</h5>
+
+<ul>
+  <li>라이브러리 설치</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>django-ckeditor
+</code></pre></div></div>
+
+<ul>
+  <li>INSTALLED_APPS에 <code class="highlighter-rouge">ckeditor</code> 추가</li>
+  <li>CKEditor가 필요로 하는 미디어 소스를 받아오기 위해 <code class="highlighter-rouge">collectstatic</code> 명령어 실행</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./manage.py collectstatic
+</code></pre></div></div>
+
+<h5 id="파일-업로드-기능을-쓰기위한-필수-요소">파일 업로드 기능을 쓰기위한 필수 요소</h5>
+
+<ul>
+  <li>INSTALLED_APPS에 <code class="highlighter-rouge">ckeditor_uploader</code> 추가</li>
+  <li>업로드 경로 설정 (예)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># settings.py</span>
+
+<span class="n">CKEDITOR_UPLOAD_PATH</span> <span class="o">=</span> <span class="s">"uploads/"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파일명이 생성될 때 메서드를 추가해주고자 할 때 (예)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># utils.py</span>
+
+<span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">filename</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># settings.py</span>
+
+<span class="n">CKEDITOR_FILENAME_GENERATOR</span> <span class="o">=</span> <span class="s">'utils.get_filename'</span>
+</code></pre></div></div>
+
+<ul>
+  <li>CKEditor URL 추가</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># urls.py</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'ckeditor/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'ckeditor_uploader.urls'</span><span class="p">)),</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="사용">사용</h3>
+
+<h5 id="필드">필드</h5>
+
+<p>필드는 라이브러리가 제공하는 RichTextField()를 사용하면 된다. 정말 쉽다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">ckeditor.fields</span> <span class="kn">import</span> <span class="n">RichTextField</span>
+
+<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">RichTextField</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><em>업로드 기능이 들어간 에디터를 사용하고 싶다면 <code class="highlighter-rouge">RichTextUploadingField()</code>를 사용하면 된다.</em></p>
+
+<h5 id="위젯">위젯</h5>
+
+<p>필드를 사용하지 않고 Form 필드에 위젯을 적용시켜 사용할수도 있다. (예)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># admin.py</span>
+
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">ckeditor.widgets</span> <span class="kn">import</span> <span class="n">CKEditorWidget</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Event</span>
+
+<span class="k">class</span> <span class="nc">EventAdminForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">CKEditorWidget</span><span class="p">())</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Event</span>
+
+<span class="k">class</span> <span class="nc">EventAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">EventAdminForm</span>
+    
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="n">EventAdmin</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h5 id="s3">S3</h5>
+
+<p>아래 줄을 추가해주지 않으면 django-storages를 통한 S3 사용이 불가하다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># settings.py</span>
+
+<span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p><strong>Query String Authenticaton</strong>에 대해 간단히 설명하자면..</p>
+
+<ul>
+  <li>Amazon S3에는 두 종류의 요청이 있다. (API Calls, URL Calls)</li>
+  <li>API Call은 프로그램 된 것에 따라 요청을 보낼 때마다 항상 AWS 자격 인증을 같이 보낸다.
+    <ul>
+      <li>고로 항상 인증된 상태의 요청이 가는 것이다.</li>
+    </ul>
+  </li>
+  <li>URL Call은 URL로 작동 되기 때문에 어느 브라우저에서나 작동할 수 있게 된다.
+    <ul>
+      <li>S3에선 Access Control List (ACL)을 통해 파일 별 퍼미션을 줄 수 있다.</li>
+      <li>Public Access 권한을 주지 않고 파일에 접근할 수 있게 하는 방법이 Query String Auth이다.
+        <ul>
+          <li>URL에 자신의 AWSAccessKey를 제공하여 유저들의 접근을 받지만,</li>
+          <li>요청마다 URL이 바뀌며 누군가 이 URL을 제공받아 접근을 시도하면 막히게 되는 것이다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>CKEditor에선 Query String Auth가 적용되면 작동이 하지 않는다고 한다..</li>
+</ul>
+
+<p><a href="/assets/documentation/django-ckeditor-58c7e14b1642cbf4288fd5ad0067cee82635fa8c09548c93ae294ace1ea5122c.png" data-rjs="/assets/documentation/django-ckeditor-58c7e14b1642cbf4288fd5ad0067cee82635fa8c09548c93ae294ace1ea5122c.png" class="fluidbox-trigger">
+  <img src="/assets/documentation/django-ckeditor-58c7e14b1642cbf4288fd5ad0067cee82635fa8c09548c93ae294ace1ea5122c.png" alt="CKEditor" />
+</a></p>
+
+<p style="text-align: center; font-size: 8; font-style: italic;">간단하게 Django Admin에 적용된 모습</p>
+
+<h3 id="기타">기타</h3>
+
+<p>이 외에도 커스터마이징, <code class="highlighter-rouge">allowedContent</code> 사용, 특정 파일 업로드 제한 등 기능이 많다. 기능에 대한 상세한 설명은 <a href="https://github.com/django-ckeditor/django-ckeditor#id12">django-ckeditor</a> 문서에서 확인할 수 있다.</p>
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Django%EC%97%90%EC%84%9C+WYSIWYG+%EC%97%90%EB%94%94%ED%84%B0+%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0%20-%20https://bookpark.github.io/posts/django-ckeditor" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://bookpark.github.io/posts/django-ckeditor" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+            <a href="https://plus.google.com/share?url=https://bookpark.github.io/posts/django-ckeditor" title="Share on Google+" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 128 128"><path d="M40.7 55.9v16.1c0 0 15.6 0 22 0C59.2 82.5 53.8 88.2 40.7 88.2c-13.3 0-23.7-10.8-23.7-24.2s10.4-24.2 23.7-24.2c7.1 0 11.6 2.5 15.8 5.9 3.3-3.3 3.1-3.8 11.6-11.9 -7.2-6.6-16.8-10.6-27.4-10.6C18.2 23.3 0 41.5 0 64c0 22.5 18.2 40.7 40.7 40.7 33.6 0 41.8-29.3 39-48.8H40.7zM113.9 56.7V42.6h-10.1v14.1H89.4v10.1h14.5v14.5h10.1V66.8H128V56.7H113.9z"/></svg>
+            </a>
+          </div>
+
+          
+            <div id="disqus_thread" class="article-comments"></div>
+            <script src="https://bookpark.disqus.com/embed.js" async defer></script>
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+          
+        </article>
+        <footer class="footer scrollappear">
+  <p>
+    ⓒ 2018. bo_oki
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108297572-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-108297572-1');
+  </script>
+
+
+<script type="text/javascript" src="/assets/vendor-2e5becc015a837c852edabccbc32f5a390d4afa7a2ca601db948ea5b9e50292a.js"></script>
+
+
+
+
+  <script type="text/javascript" src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js"></script>
+
+
+<script type="text/javascript" src="/assets/application-cd43a7f9bd8a08997bb19229cd040e7129ede0a1adf77c693b5835c9f8c2a4b1.js"></script>
+
+</body>
+</html>
