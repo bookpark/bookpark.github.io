@@ -20,14 +20,14 @@ tags: [web, django]
 
 ##### 필수 요소
 
-1. 라이브러리 설치
+- 라이브러리 설치
 
 ```bash
 pip install django-ckeditor
 ```
 
-2. INSTALLED_APPS에 `ckeditor` 추가
-3. CKEditor가 필요로 하는 미디어 소스를 받아오기 위해 `collectstatic` 명령어 실행
+- INSTALLED_APPS에 `ckeditor` 추가
+- CKEditor가 필요로 하는 미디어 소스를 받아오기 위해 `collectstatic` 명령어 실행
 
 ```bash
 ./manage.py collectstatic
@@ -37,8 +37,8 @@ pip install django-ckeditor
 
 ##### 파일 업로드 기능을 쓰기위한 필수 요소
 
-1. INSTALLED_APPS에 `ckeditor_uploader` 추가 
-2. 업로드 경로 설정 (예)
+- INSTALLED_APPS에 `ckeditor_uploader` 추가 
+- 업로드 경로 설정 (예)
 
 ```python
 # settings.py
@@ -46,7 +46,7 @@ pip install django-ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
 ```
 
-3. 파일명이 생성될 때 메서드를 추가해주고자 할 때 (예)
+- 파일명이 생성될 때 메서드를 추가해주고자 할 때 (예)
 
 ```python
 # utils.py
@@ -61,7 +61,7 @@ def get_filename(filename):
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 ```
 
-4. CKEditor URL 추가
+- CKEditor URL 추가
 
 ```python
 # urls.py
