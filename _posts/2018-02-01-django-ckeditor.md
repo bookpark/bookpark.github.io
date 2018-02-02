@@ -144,6 +144,14 @@ AWS_QUERYSTRING_AUTH = False
 
 
 
+
+{% include image.html path="documentation/django-ckeditor.png" path-detail="documentation/django-ckeditor.png" alt="CKEditor" %}
+
+<p style="text-align: center; font-size: 8; font-style: italic;">간단하게 Django Admin에 적용된 모습</p>
+
+
+
+
 ### 기타
 
 이 외에도 커스터마이징, `allowedContent` 사용, 특정 파일 업로드 제한 등 기능이 많다. 기능에 대한 상세한 설명은 [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor#id12) 문서에서 확인할 수 있다.
