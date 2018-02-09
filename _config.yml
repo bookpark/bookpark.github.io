@@ -1,7 +1,7 @@
 # Site settings
 title:          bo_oki
 description:    "초보 개발자 개발 블로그"
-baseurl:        "/bookpark"
+baseurl:        ""
 url:            "https://bookpark.github.io/"
 
 # Author
