@@ -1,14 +1,8 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "autoprefixer-rails"
-gem "html-proofer"
-gem "image_optim"
-gem "jekyll"
-gem "jekyll-assets"
+source "https://rubygems.org"
+gemspec
+
+# theme conf.
+gem "jekyll-remote-theme"
 gem "jekyll-paginate"
-gem "jekyll-sitemap"
-gem "jemoji"
-gem "mini_magick"
-gem "sass"
-gem "sprockets", "4.0.0.beta6"
-gem "uglifier"

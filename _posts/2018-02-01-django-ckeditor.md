@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Django에서 WYSIWYG 에디터 사용하기"
 description: "Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자"
-tags: [web, django]
 ---
 
 웹 프로젝트를 진행하면서 어드민 페이지에 위지위그(WYSIWYG) 방식의 에디터가 필요로 해 리서치를 하던 중 손쉽게 세팅이 가능하고 django-storages, S3를 지원하는 라이브러리를 발견해 소개하고자 한다.
@@ -14,11 +13,11 @@ tags: [web, django]
 
 
 
-###설치
+## 설치
 
 
 
-##### 필수 요소
+### 필수 요소
 
 - 라이브러리 설치
 
@@ -35,9 +34,9 @@ pip install django-ckeditor
 
 
 
-##### 파일 업로드 기능을 쓰기위한 필수 요소
+### 파일 업로드 기능을 쓰기위한 필수 요소
 
-- INSTALLED_APPS에 `ckeditor_uploader` 추가 
+- INSTALLED_APPS에 `ckeditor_uploader` 추가
 - 업로드 경로 설정 (예)
 
 ```python
@@ -74,11 +73,11 @@ urlpatterns = [
 
 
 
-### 사용
+## 사용
 
 
 
-##### 필드
+### 필드
 
 필드는 라이브러리가 제공하는 RichTextField()를 사용하면 된다. 정말 쉽다.
 
@@ -94,7 +93,7 @@ _업로드 기능이 들어간 에디터를 사용하고 싶다면 `RichTextUplo
 
 
 
-##### 위젯
+### 위젯
 
 필드를 사용하지 않고 Form 필드에 위젯을 적용시켜 사용할수도 있다. (예)
 
@@ -114,13 +113,13 @@ class EventAdminForm(forms.ModelForm):
 
 class EventAdmin(admin.ModelAdmin):
     form = EventAdminForm
-    
+
 admin.site.register(Event, EventAdmin)
 ```
 
 
 
-##### S3
+### S3
 
 아래 줄을 추가해주지 않으면 django-storages를 통한 S3 사용이 불가하다.
 
@@ -143,9 +142,8 @@ AWS_QUERYSTRING_AUTH = False
 * CKEditor에선 Query String Auth가 적용되면 작동이 하지 않는다고 한다..
 
 
+![CKEditor]({{ "/assets/images/django-ckeditor.png" | relative_url }})
 
-
-{% include image.html path="documentation/django-ckeditor.png" path-detail="documentation/django-ckeditor.png" alt="CKEditor" %}
 
 <p style="text-align: center; font-size: 8; font-style: italic;">간단하게 Django Admin에 적용된 모습</p>
 

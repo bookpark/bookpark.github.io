@@ -3,20 +3,20 @@ layout: post
 comments: true
 title: "Django 2.0 UnicodeDecodeError 해결법"
 description: "bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자"
-tags: [web, django]
 ---
 
 
 최근 이메일 인증을 다시 구현하기 위해 전에 쓰던 코드를 적용하고 테스트를 하는데...
 
-{% include image.html path="documentation/django_unicode_decode_error.png" path-detail="documentation/django_unicode_decode_error.png" alt="Decode Error" %}
+![에러]({{ "/assets/images/django_unicode_decode_error.png" | relative_url }})
 
 <p style="text-align: center; font-size: 8; font-style: italic;">아니 이게 왠 처음보는 에러메시지인가..</p>
 
 정신 차리고 언제나 해답이 있는 장고 공식문서를 찾아가보았다.
 아니나 다를까 그 곳엔 역시 해답이 있었다.
 
-{% include image.html path="documentation/django_2.0_bytestrings.png" path-detail="documentation/django_2.0_bytestrings.png" alt="Bytestrings" %}
+![바이트스트링]({{ "/assets/images/django_2.0_bytestrings.png" | relative_url}})
+
 
 Django는 1.11 버전까지 Python 2를 지원하기 위해 bytestring과 unicode string을 모두 지원했었지만 Django가 2.0으로 버전 업이 되면서 Python 2는 더 이상 지원하지 않게 되면서 bytestring 사용을 제한한다는 얘기이다.
 
@@ -68,4 +68,4 @@ def activate(request, uidb64=None, token=None):
 
 이렇게 바꾸어주니!
 
-{% include image.html path="documentation/gaviscon.jpg" path-detail="documentation/gaviscon.jpg" alt="Gaviscon" %}
+![편ㅡ안]({{ "/assets/images/gaviscon.jpg" | relative_url }})
