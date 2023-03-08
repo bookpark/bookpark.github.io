@@ -1,7 +1,9 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "Django에서 WYSIWYG 에디터 사용하기"
+author: "Booki"
+tags: "Django"
 description: "Django admin에 WYSIWYG 에디터를 적용시켜 포스팅을 쉽게 해보자"
 ---
 

@@ -1,8 +1,10 @@
 # Site settings
 title:          bo_oki
-description:    "초보 개발자 개발 블로그"
-baseurl:        ""
-url:            "https://bookpark.github.io/"
+description:    "dev"
+url:            "https://bookpark.github.io"
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
 
 # Author
 author:
@@ -12,6 +14,8 @@ author:
 
 # Build settings
 markdown:       kramdown
+include:
+  - _pages
 
 # Assets
 sass:
@@ -20,12 +24,16 @@ sass:
 
 # Gems
 plugins:
+  - jekyll-feed
   - jekyll-paginate
-  - jekyll-remote-theme
+  - jekyll-seo-tag
 
 # Permalinks
 permalink:      /:year-:month-:day/:title
 paginate:       5
 
-# Themes
-remote_theme:   chesterhow/tale
+# Excludes
+exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
+
+# Disqus (Set to your disqus id)
+disqus:         bookpark

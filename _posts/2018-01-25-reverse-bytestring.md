@@ -1,7 +1,9 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "Django 2.0 UnicodeDecodeError 해결법"
+author: "Booki"
+tags: "Django"
 description: "bytestring의 reverse(), decode() 관련 UnicodeDecodeError를 해결해보자"
 ---
 

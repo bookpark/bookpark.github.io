@@ -1,7 +1,9 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "Pillow를 사용한 썸네일 만들기"
+author: "Booki"
+tags: "Django"
 description: "업로드 된 이미지를 썸네일 크기로 리사이징해 사용해보자"
 ---
 
