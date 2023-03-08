@@ -64,6 +64,8 @@ p6spy 설정을 통해 log 파일을 남기거나 log 포맷을 바꾸는 등 �
 
 > 참고: <https://github.com/gavlyukovskiy/spring-boot-data-source-decorator>
 
+---
+
 p6spy가 적용 된 로그를 확인해보자.
 
 ```
