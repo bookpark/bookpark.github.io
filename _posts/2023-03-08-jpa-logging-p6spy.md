@@ -12,15 +12,15 @@ JPA를 사용하며 쿼리 로그를 출력해야 할 때의 설정은 다음과
 
 ```yaml
 spring:
-	jpa:
-		properties:
-			hibernate:
-				show_sql: true
-				format_sql: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
 logging:
-	level:
-		org.hibernate.sql: debug
-		org.hibernate.type: trace # parameter 값 보기
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace # parameter 값 보기
 ```
 
 > `show_sql` 옵션은 `System.out` 에 Hibernate 실행 SQL을 남기고,
@@ -58,11 +58,13 @@ decorator:
       logging: slf4j
 ```
 
-*2023년 3월 8일 기준 SpringBoot 3.0 이상에서도 잘 작동한다.*
-
 p6spy 설정을 통해 log 파일을 남기거나 log 포맷을 바꾸는 등 여러 설정을 할 수 있다.
 
-p6spy가 적용 된 모습을 확인해보자.
+*2023년 3월 8일 기준 SpringBoot 3.0 이상에서도 잘 작동한다.*
+
+> 참고: <https://github.com/gavlyukovskiy/spring-boot-data-source-decorator>
+
+p6spy가 적용 된 로그를 확인해보자.
 
 ```
 2023-03-08T23:59:58.355+09:00  INFO 51289 --- [           main] p6spy
