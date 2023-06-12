@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Spring on bo_oki</title>
+    <link>https://bookpark.github.io/tags/spring/</link>
+    <description>Recent content in Spring on bo_oki</description>
+    <image>
+      <title>bo_oki</title>
+      <url>https://bookpark.github.io/papermod-cover.png</url>
+      <link>https://bookpark.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bookpark.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[JPA] API 성능 최적화 하기 (2) - Fetch Join</title>
+      <link>https://bookpark.github.io/posts/2023-02-05-jpa-api-optimization-2/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bookpark.github.io/posts/2023-02-05-jpa-api-optimization-2/</guid>
+      <description>이 글은 김영한 님의 실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 편을 보고 남기는 정리글 입니다.</description>
+    </item>
+    
+    <item>
+      <title>[JPA] API 성능 최적화 하기 (1) - X to One 연관 관계</title>
+      <link>https://bookpark.github.io/posts/2023-02-04-jpa-api-optimization/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bookpark.github.io/posts/2023-02-04-jpa-api-optimization/</guid>
+      <description>이 글은 김영한 님의 실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 편을 보고 남기는 정리글 입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

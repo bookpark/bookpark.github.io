@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://bookpark.github.io/sitemap.xml
